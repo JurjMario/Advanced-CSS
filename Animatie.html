@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Animatie</title>
+    <style>
+        body {
+            background-color: #050210;
+        }
+
+        #cerc {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 410px;
+            height: 410px;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        #cerc::before {
+            content: "";
+            position: absolute;
+            inset: -14px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #fb5dad, #55fb9f, #b97aff);
+            filter: blur(18px);
+            opacity: 0.85;
+            z-index: 1;
+            pointer-events: none;
+            animation: spin 1s linear infinite;
+        }
+
+        .inel {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #fb5dad, #55fb9f, #b97aff);
+            animation: spin 1s linear infinite;
+        }
+
+        .centru {
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            right: 30px;
+            bottom: 30px;
+            border-radius: 50%;
+            background-color: #050210;
+            z-index: 3;
+        }
+        .centru::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(farthest-corner at 100% 50%, #1a152c);
+            filter: blur(16px);
+            opacity: 0.4;
+            z-index: 5;
+            pointer-events: none;
+            animation: centru 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes centru {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+
+            70% {
+                transform: scale(1);
+                opacity: 0.25;
+            }
+
+            100% {
+                transform: scale(1.08);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cerc">
+        <div class="inel"></div>
+        <div class="centru"></div>
+    </div>
+</body>
+
+</html>
